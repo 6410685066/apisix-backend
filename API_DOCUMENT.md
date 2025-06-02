@@ -30,15 +30,16 @@
 
 ## Product
 
-> **All endpoints below require a JWT token in the `Authorization` header.**
+ **All endpoints below require a JWT token in the `Authorization` header.**
 
-### GET /api/data
+## GET /api/data
+
 - **Description:** Retrieve a list of products.
-- **Query Parameters:**
-    - `name` (string)
-    - `category` (string)
-    - `price` (float)
-    - `stock` (uint)
+- **Query Parameters:**  
+  - `name` (string)  
+  - `category` (string)  
+  - `price` (float)  
+  - `stock` (uint)  
 - **Response:**
     - `200 OK`
         ```json
@@ -56,8 +57,19 @@
           }
         ]
         ```
+    - `400 Bad Request`
+        ```json
+        { "error": "Invalid request" }
+        ```
+    - `500 Internal Server Error`
+        ```json
+        { "error": "Failed to retrieve products" }
+        ```
 
-### POST /api/data
+---
+
+## POST /api/data
+
 - **Description:** Create a new product.
 - **Request Body:**
     ```json
@@ -77,10 +89,17 @@
         ```
     - `400 Bad Request`
         ```json
-        { "error": "..." }
+        { "error": "Validation failed: ..." }
+        ```
+    - `500 Internal Server Error`
+        ```json
+        { "error": "Failed to create product" }
         ```
 
-### PUT /api/data/:id
+---
+
+## PUT /api/data/:id
+
 - **Description:** Update a product by ID (replace all fields).
 - **Request Body:**
     ```json
@@ -103,8 +122,19 @@
         ```json
         { "error": "Invalid product ID" }
         ```
+    - `400 Bad Request`
+        ```json
+        { "error": "Validation failed: ..." }
+        ```
+    - `500 Internal Server Error`
+        ```json
+        { "error": "Failed to update product" }
+        ```
 
-### PATCH /api/data/:id
+---
+
+## PATCH /api/data/:id
+
 - **Description:** Update specific fields of a product by ID.
 - **Request Body:** (Only the fields to be updated are required, but `id`, `create_by`, and `update_by` are required)
     ```json
@@ -127,8 +157,19 @@
         ```json
         { "error": "Invalid product ID" }
         ```
+    - `400 Bad Request`
+        ```json
+        { "error": "Validation failed: ..." }
+        ```
+    - `500 Internal Server Error`
+        ```json
+        { "error": "Failed to patch product" }
+        ```
 
-### DELETE /api/data/:id
+---
+
+## DELETE /api/data/:id
+
 - **Description:** Delete a product by ID.
 - **Response:**
     - `200 OK`
@@ -138,6 +179,10 @@
     - `400 Bad Request`
         ```json
         { "error": "Invalid product ID" }
+        ```
+    - `500 Internal Server Error`
+        ```json
+        { "error": "Failed to delete product" }
         ```
 
 ---
