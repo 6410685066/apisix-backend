@@ -1,0 +1,32 @@
+# Binary
+*.exe
+*.out
+*.test
+
+# Build files
+/build/
+bin/
+dist/
+vendor/
+
+# Dependency dirs
+/go.sum
+/go.mod~
+
+# Logs
+*.log
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Swagger auto-generated
+/docs/
+
+# .env file 
+.env
