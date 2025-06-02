@@ -52,4 +52,6 @@ go build -o apisix-backend
 docker build -t go-app .
 ```
 
+## Architecture Diagram
+![System Architecture](diagram.png)
 
