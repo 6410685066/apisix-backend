@@ -34,7 +34,11 @@
 
 ### GET /api/data
 - **Description:** Retrieve a list of products.
-- **Query Parameters:** (As supported by the system)
+- **Query Parameters:**
+    - `name` (string)
+    - `category` (string)
+    - `price` (float)
+    - `stock` (uint)
 - **Response:**
     - `200 OK`
         ```json
@@ -42,7 +46,13 @@
           {
             "id": 1,
             "name": "Product A",
-            "price": 100
+            "category": "Category X",
+            "price": 100.0,
+            "stock": 10,
+            "created_at": "2024-06-03T12:00:00Z",
+            "create_by": "admin",
+            "updated_at": "2024-06-03T12:00:00Z",
+            "update_by": "admin"
           }
         ]
         ```
@@ -53,7 +63,11 @@
     ```json
     {
       "name": "Product A",
-      "price": 100
+      "category": "Category X",
+      "price": 100.0,
+      "stock": 10,
+      "create_by": "admin",
+      "update_by": "admin"
     }
     ```
 - **Response:**
@@ -71,8 +85,13 @@
 - **Request Body:**
     ```json
     {
+      "id": 1,
       "name": "Product A",
-      "price": 120
+      "category": "Category X",
+      "price": 120.0,
+      "stock": 15,
+      "create_by": "admin",
+      "update_by": "editor"
     }
     ```
 - **Response:**
@@ -87,10 +106,16 @@
 
 ### PATCH /api/data/:id
 - **Description:** Update specific fields of a product by ID.
-- **Request Body:** (Only the fields to be updated)
+- **Request Body:** (Only the fields to be updated are required, but `id`, `create_by`, and `update_by` are required)
     ```json
     {
-      "price": 130
+      "id": 1,
+      "name": "Product A",
+      "category": "Category X",
+      "price": 130.0,
+      "stock": 20,
+      "create_by": "admin",
+      "update_by": "editor"
     }
     ```
 - **Response:**
